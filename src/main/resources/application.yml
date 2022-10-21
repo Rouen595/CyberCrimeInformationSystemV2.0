@@ -1,0 +1,35 @@
+server:
+  port: 8081
+  error:
+    include-exception: true
+    include-stacktrace: always
+
+# TODO: springdoc
+
+
+logging:
+  level:
+    root: info
+    org:
+        springframework.security: trace
+
+  thymeleaf:
+    cache: false
+
+
+spring:
+  datasource:
+    username: cisUser
+    url: 'jdbc:sqlserver://localhost;databaseName=SQLTutorial;encrypt=true;trustServerCertificate=true; '
+    password: 'cisUser'
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2012Dialect
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: 'true'
+

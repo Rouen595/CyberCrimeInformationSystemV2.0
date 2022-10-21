@@ -1,0 +1,19 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+  <title th:utext="#{label.pages.default.title}">index</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" th:utext="#{label.pages.default.title}">home</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a th:href="@{/home.html}" th:utext="#{label.pages.login}">login</a></li>
+    </ul>
+  </div>
+</nav>
+</body>
+</html>
+</html>
