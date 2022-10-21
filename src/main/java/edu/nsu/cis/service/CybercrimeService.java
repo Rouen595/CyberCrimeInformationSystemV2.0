@@ -15,5 +15,8 @@ public class CybercrimeService {
     public List<Cybercrime> retrieveCybercrimeList(String cybercrimeType) {
         return cybercrimeRepository.findByCybercrimeType(cybercrimeType);
     }
+    public List<Cybercrime> retrieveAll() {
+        return cybercrimeRepository.findAll();
+    }
 
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:utext="#{label.pages.home.title}">dashboard</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+
+<h1>Cybercrime List</h1>
+<br>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Severity Level</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${cybercrimeList.empty}">
+        <td colspan="3"> No Cybercrime records exist! </td>
+    </tr>
+    <tr th:each="cybercrime : ${cybercrimeList}">
+        <td><span th:text="${cybercrime.id}">ID</span></td>
+        <td><span th:text="${cybercrime.cybercrimeType}">Type</span></td>
+        <td><span th:text="${cybercrime.severityLevel}">Severity Level</span></td>
+    </tr>
+    </tbody>
+</table>
+
+<br><br>
+
+<div th:replace="fragments/footer :: footer"/>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{assets/bootstrap-select-1.13.9/dist/js/bootstrap-select.js}"></script>
+
+</body>
+</html>
