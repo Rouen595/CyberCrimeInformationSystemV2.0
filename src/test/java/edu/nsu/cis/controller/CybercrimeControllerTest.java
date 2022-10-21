@@ -7,17 +7,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-public class HomeControllerTest {
+public class CybercrimeControllerTest {
 
     @Autowired
-    private HomeController homeController;
+    private CybercrimeController cybercrimeController;
 
     @Test
     public void contextLoadsTest() {
         // Given
         // When
         // Then
-        assertThat(homeController).isNotNull();
+        assertThat(cybercrimeController).isNotNull();
     }
 
 }
