@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Search Cybercrime</title>
+
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="starter-template">
+    <h1>Enter Search Parameters</h1>
+    <br>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4 mt-5">
+                <form method="post" th:object="${cyberSearch}">
+
+                    <div class="form-group">
+                        <label for="cybercrime">Select Cybercrime</label>
+                        <select class="selectpicker form-control" th:field="*{cybercrime}" id="cybercrime">
+                            <option value="">Nothing selected</option>
+                            <option th:each="cybercrime : ${T(edu.nsu.cis.model.enums.Cybercrime).values()}"
+                                    th:value="${cybercrime}"
+                                    th:text="${cybercrime}">cybercrime
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="severity">Select Severity</label>
+                        <select class="selectpicker form-control" th:field="*{severity}" id="severity">
+                            <option value="">Nothing selected</option>
+                            <option th:each="severity : ${T(edu.nsu.cis.model.enums.Severity).values()}"
+                                    th:value="${severity}"
+                                    th:text="${severity}">severity
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<br><br>
+
+<div th:replace="fragments/footer :: footer"/>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{assets/bootstrap-select-1.13.9/dist/js/bootstrap-select.js}"></script>
+
+</body>
+</html>
