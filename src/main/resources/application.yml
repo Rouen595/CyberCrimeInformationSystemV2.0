@@ -11,7 +11,7 @@ logging:
   level:
     root: info
     org:
-        springframework.security: trace
+        springframework.security: debug
 
   thymeleaf:
     cache: false

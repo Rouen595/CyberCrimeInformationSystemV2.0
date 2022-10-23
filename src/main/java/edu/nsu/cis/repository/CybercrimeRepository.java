@@ -21,4 +21,7 @@ public interface CybercrimeRepository extends JpaRepository<Cybercrime, Integer>
     @Transactional(readOnly = true)
     List<Cybercrime> findByCybercrimeType(String cybercrimeType);
 
+    @Transactional(readOnly = true)
+    List<Cybercrime> findAll();
+
 }

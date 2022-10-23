@@ -28,6 +28,7 @@ public class MvcConfig implements WebMvcConfigurer {
         //registry.addViewController("/homepage.html");
         registry.addViewController("/home.html");
         registry.addViewController("/search.html");
+
         registry.addViewController("/login.html");
         registry.addViewController("/logout.html");
         registry.addViewController("/error/access-denied.html");

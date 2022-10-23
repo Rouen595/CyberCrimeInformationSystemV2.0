@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Cybercrime List</title>
+
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+    <div>
+        <h1>Cybercrime List</h1>
+        <br>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Severity Level</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${cybercrimeList.empty}">
+                <td colspan="3"> No Cybercrime records exist! </td>
+            </tr>
+            <tr th:each="cybercrime : ${cybercrimeList}">
+                <td th:text="${cybercrime.id}"></td>
+                <td th:text="${cybercrime.cybercrimeType}"></td>
+                <td th:text="${cybercrime.severityLevel}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br><br>
+
+<div th:replace="fragments/footer :: footer"/>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{assets/bootstrap-select-1.13.9/dist/js/bootstrap-select.js}"></script>
+
+</body>
+</html>
