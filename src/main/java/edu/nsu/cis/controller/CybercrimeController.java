@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@RequestMapping("/cybercrime")
 @Controller
 public class CybercrimeController {
 
@@ -20,7 +19,7 @@ public class CybercrimeController {
     public String searchAll(Model model) {
         List<Cybercrime> cybercrimeList = cybercrimeService.retrieveAll();
         model.addAttribute("cybercrimeList", cybercrimeList);
-        return "cybercrime/cybercrimeList";
+        return "cybercrimeList";
     }
 
 }

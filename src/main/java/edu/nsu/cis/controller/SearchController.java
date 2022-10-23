@@ -14,7 +14,6 @@ import java.util.List;
 
 @Controller
 public class SearchController {
-
     @Autowired
     private CybercrimeService cybercrimeService;
 
@@ -23,7 +22,6 @@ public class SearchController {
         model.addAttribute("cyberSearch", new CyberSearch());
         return "/search";
     }
-
 
     @PostMapping("/search")
     public String viewCybercrimeResults(CyberSearch cyberSearch, Model model) {
