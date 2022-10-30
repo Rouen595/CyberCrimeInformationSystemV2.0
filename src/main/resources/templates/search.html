@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <title>Search Cybercrime</title>
 
-    <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
-    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 
     <div th:replace="fragments/header :: header-css"/>
 </head>
@@ -21,11 +21,11 @@
 
         <div class="row">
             <div class="col-md-4 mt-5">
-                <form method="post" th:object="${cybercrimeList}">
+                <form method="post" th:object="${cyberSearch}">
 
                     <div class="form-group">
                         <label for="cybercrimeType">Select Cybercrime</label>
-                        <select class="selectpicker form-control"  id="cybercrimeType">
+                        <select class="selectpicker form-control" th:field="*{cybercrimeType}"  id="cybercrimeType">
                             <option value="">Nothing selected</option>
                             <option th:each="cybercrime : ${cybercrimeList}"
                                     th:value="${cybercrime.cybercrimeType}"
@@ -37,11 +37,11 @@
 
                     <div class="form-group">
                         <label for="severityLevel">Select Severity</label>
-                        <select class="selectpicker form-control"  id="severityLevel">
+                        <select class="selectpicker form-control" th:field="*{severityLevel}"  id="severityLevel">
                             <option value="">Nothing selected</option>
-                            <option th:each="cybercrime : ${cybercrimeList}"
-                                    th:value="${cybercrime.severityLevel}"
-                                    th:text="${cybercrime.severityLevel}">severityLevel
+                            <option th:each="severitylevel : ${cybercrimeBySeverityLevelList}"
+                                    th:value="${severitylevel}"
+                                    th:text="${severitylevel}">severityLevel
                             </option>
 
                         </select>
