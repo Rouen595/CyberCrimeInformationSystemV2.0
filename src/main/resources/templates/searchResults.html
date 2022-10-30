@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
       <title>Saved Page</title>
-
       <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
@@ -11,8 +10,8 @@
 
 
 <div class="container">
-  <div class="mt-5">Cybercrime: <strong th:text="${cyberSearch.cybercrime}"></strong></div>
-  <div>Severity: <strong th:text="${cyberSearch.severity}"></strong></div>
+  <div class="mt-5">Cybercrime: <strong th:text="${cybercrime.cybercrimeType}"></strong></div>
+  <div>Severity: <strong th:text="${cyberSearch}"></strong></div>
 
     <br>
   <a th:href="@{/search}" class="btn btn-primary mt-5">Go back</a>
