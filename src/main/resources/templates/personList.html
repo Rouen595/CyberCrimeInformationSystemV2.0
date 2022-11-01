@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Person List</title>
+
+  <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
+  <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+  <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+  <div>
+    <h1>Person List</h1>
+    <!--<a href="/new">Create New Person</a>-->
+    <br>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Person ID</th>
+        <th>Person Type</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Street Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zipcode</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:if="${personList.empty}">
+        <td colspan="3"> No Person records exist! </td>
+      </tr>
+      <tr th:each="person : ${personList}">
+        <td th:text="${person.id}"></td>
+        <td th:text="${person.getPersonTypeID().personType}"></td>
+        <td th:text="${person.firstName}"></td>
+        <td th:text="${person.lastName}"></td>
+        <td th:text="${person.age}"></td>
+        <td th:text="${person.streetAddress}"></td>
+        <td th:text="${person.city}"></td>
+        <td th:text="${person.state}"></td>
+        <td th:text="${person.zipCode}"></td>
+        <!--
+        <td>
+          <a th:href="@{'/edit/' + ${person.id}}">Edit</a>
+          &nbsp;&nbsp;&nbsp;
+          <a th:href="@{'/delete/' + ${person.id}}">Delete</a>
+        </td>
+        -->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br><br>
+
+<div th:replace="fragments/footer :: footer"/>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{assets/bootstrap-select-1.13.9/dist/js/bootstrap-select.js}"></script>
+
+</body>
+</html>

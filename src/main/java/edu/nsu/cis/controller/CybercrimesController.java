@@ -1,8 +1,6 @@
 package edu.nsu.cis.controller;
 
-import edu.nsu.cis.model.db.Cybercrime;
 import edu.nsu.cis.model.db.Cybercrimes;
-import edu.nsu.cis.service.CybercrimeService;
 import edu.nsu.cis.service.CybercrimesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
