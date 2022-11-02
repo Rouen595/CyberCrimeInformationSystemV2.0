@@ -5,7 +5,7 @@
     <title>Edit Cybercrime</title>
 
     <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
-    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/css/bootstrap.min.css} "/>
 
     <div th:replace="fragments/header :: header-css"/>
 </head>
@@ -16,7 +16,7 @@
 <div class="container">
   <h1>Edit Cybercrime</h1>
   <br />
-  <form action="#" th:action="@{/save}" th:object="${cybercrime}"
+  <form action="#" th:action="@{/save-cybercrime}" th:object="${cybercrime}"
         method="post">
 
     <table class="table table-striped">

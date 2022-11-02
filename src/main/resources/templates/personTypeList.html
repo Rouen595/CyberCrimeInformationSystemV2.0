@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8"/>
-  <title>Cybercrime List</title>
+  <title>Person Type List</title>
 
   <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
   <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
@@ -15,36 +15,30 @@
 
 <div class="container">
   <div>
-    <h1>Cybercrimes List</h1>
-    <a href="/new-cybercrimes">Create New Cybercrime</a>
+    <h1>Person Type List</h1>
+    <a href="/new-persontype">Create New Person Type</a>
     <br>
     <table class="table table-striped">
       <thead>
       <tr>
-        <th>Cybercrimes ID</th>
-        <th>Cybercrime Type</th>
-        <th>Person Name</th>
-        <th>Punishment</th>
-        <th>Arrest Date</th>
-        <th>Sentencing Date</th>
+        <th>Person Type ID</th>
+        <th>Person Type</th>
       </tr>
       </thead>
       <tbody>
-      <tr th:if="${cybercrimesList.empty}">
-        <td colspan="3"> No Cybercrime records exist! </td>
+      <tr th:if="${personTypeList.empty}">
+        <td colspan="3"> No Person Type records exist! </td>
       </tr>
-      <tr th:each="cybercrimes : ${cybercrimesList}">
-        <td th:text="${cybercrimes.id}"></td>
-        <td th:text="${cybercrimes.getCybercrimeID().cybercrimeType}"></td>
-        <td th:text="${cybercrimes.getPersonID().getFirstName()} + ' ' + ${cybercrimes.getPersonID().getLastName()}"></td>
-        <td th:text="${cybercrimes.punishment}"></td>
-        <td th:text="${cybercrimes.arrestDate}"></td>
-        <td th:text="${cybercrimes.sentencingDate}"></td>
+      <tr th:each="personType : ${personTypeList}">
+        <td th:text="${personType.id}"></td>
+        <td th:text="${personType.personType}"></td>
+
         <td>
-          <a th:href="@{'/edit-cybercrimes/' + ${cybercrimes.id}}">Edit</a>
+          <a th:href="@{'/edit-persontype/' + ${personType.id}}">Edit</a>
           &nbsp;&nbsp;&nbsp;
-          <a th:href="@{'/delete-cybercrimes/' + ${cybercrimes.id}}">Delete</a>
+          <a th:href="@{'/delete-persontype/' + ${personType.id}}">Delete</a>
         </td>
+
       </tr>
       </tbody>
     </table>

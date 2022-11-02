@@ -1,11 +1,9 @@
 package edu.nsu.cis.controller;
 
-import edu.nsu.cis.model.CyberSearch;
+import edu.nsu.cis.model.CyberSearchDTO;
 import edu.nsu.cis.model.db.Cybercrime;
-import edu.nsu.cis.repository.CybercrimeRepository;
 import edu.nsu.cis.service.CybercrimeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +27,11 @@ public class SearchController {
     @GetMapping("/search")
     public String searchAll(Model model) {
         List<Cybercrime> cybercrimeList = cybercrimeService.retrieveAll();
+        List<String> cybercrimeBySeverityLevelList = cybercrimeService.retrieveDistinctBySeverityLevel();
+
+        model.addAttribute("cyberSearch", new CyberSearchDTO());
         model.addAttribute("cybercrimeList", cybercrimeList);
+        model.addAttribute("cybercrimeBySeverityLevelList", cybercrimeBySeverityLevelList);
         return "/search";
     }
 
@@ -45,7 +47,7 @@ public class SearchController {
     */
 
     @PostMapping("/search")
-    public String viewCybercrimeResults(CyberSearch cyberSearch, Model model) {
+    public String viewCybercrimeResults(CyberSearchDTO cyberSearch, Model model) {
         model.addAttribute("cyberSearch", cyberSearch);
 
         //List<Cybercrime> cybercrimeList = cybercrimeService.retrieveCybercrimeList("Phishing");

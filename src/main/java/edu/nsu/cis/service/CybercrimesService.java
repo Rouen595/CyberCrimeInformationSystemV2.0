@@ -1,5 +1,6 @@
 package edu.nsu.cis.service;
 
+import edu.nsu.cis.model.db.Cybercrime;
 import edu.nsu.cis.model.db.Cybercrimes;
 import edu.nsu.cis.repository.CybercrimesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,18 @@ public class CybercrimesService {
     }
     public List<Cybercrimes> retrieveAll() {
         return cybercrimesRepository.findAll();
+    }
+
+    public void save(Cybercrimes cybercrimes) {
+        cybercrimesRepository.save(cybercrimes);
+    }
+
+    public Cybercrimes get(Integer id) {
+        return cybercrimesRepository.findById(id).get();
+    }
+
+    public void delete(int id) {
+        cybercrimesRepository.deleteById(id);
     }
 
 }

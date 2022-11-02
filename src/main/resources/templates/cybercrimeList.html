@@ -16,7 +16,7 @@
 <div class="container">
     <div>
         <h1>Cybercrime List</h1>
-        <a href="/new">Create New Cybercrime</a>
+        <a href="/new-cybercrime">Create New Cybercrime</a>
         <br>
         <table class="table table-striped">
             <thead>
@@ -35,9 +35,9 @@
                 <td th:text="${cybercrime.cybercrimeType}"></td>
                 <td th:text="${cybercrime.severityLevel}"></td>
                 <td>
-                    <a th:href="@{'/edit/' + ${cybercrime.id}}">Edit</a>
+                    <a th:href="@{'/edit-cybercrime/' + ${cybercrime.id}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${cybercrime.id}}">Delete</a>
+                    <a th:href="@{'/delete-cybercrime/' + ${cybercrime.id}}">Delete</a>
                 </td>
             </tr>
             </tbody>

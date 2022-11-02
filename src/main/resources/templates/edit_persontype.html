@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8"/>
-  <title>New Cybercrime</title>
+  <title>Edit Person Type</title>
 
   <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
-  <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+  <link th:rel="stylesheet" th:href="@{webjars/bootstrap/css/bootstrap.min.css} "/>
 
   <div th:replace="fragments/header :: header-css"/>
 </head>
@@ -14,25 +14,31 @@
 <div th:replace="fragments/header :: header"/>
 
 <div class="container">
-  <h1>Create New Cybercrime</h1>
+  <h1>Edit PersonType</h1>
   <br />
-  <form action="#" th:action="@{/save-cybercrime}" th:object="${cybercrime}"
+  <form action="#" th:action="@{/save-persontype}" th:object="${persontype}"
         method="post">
 
     <table class="table table-striped">
       <tr>
-        <td>Cybercrime Type:</td>
-        <td><input type="text" th:field="*{cybercrimeType}" /></td>
+        <td>PersonType ID:</td>
+        <td>
+          <input type="text" th:field="*{id}" />
+        </td>
       </tr>
+
       <tr>
-        <td>Severity:</td>
-        <td><input type="text" th:field="*{severityLevel}" /></td>
+        <td>Person Type:</td>
+        <td>
+          <input type="text" th:field="*{personType}" />
+        </td>
       </tr>
       <tr>
         <td colspan="2"><button type="submit">Save</button> </td>
       </tr>
     </table>
   </form>
+
 </div>
 
 <br><br>

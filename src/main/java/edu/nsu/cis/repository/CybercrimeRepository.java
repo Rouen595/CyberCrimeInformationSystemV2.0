@@ -24,4 +24,8 @@ public interface CybercrimeRepository extends JpaRepository<Cybercrime, Integer>
     @Transactional(readOnly = true)
     List<Cybercrime> findAll();
 
+    @Transactional(readOnly = true)
+    @Query("select distinct severityLevel from Cybercrime")
+    List<String> findDistinctBySeverityLevel();
+
 }

@@ -10,8 +10,8 @@
 
 
 <div class="container">
-  <div class="mt-5">Cybercrime: <strong th:text="${cybercrime.cybercrimeType}"></strong></div>
-  <div>Severity: <strong th:text="${cyberSearch}"></strong></div>
+  <div class="mt-5">Cybercrime: <strong th:text="${cyberSearch.cybercrimeType}"></strong></div>
+  <div>Severity: <strong th:text="${cyberSearch.severityLevel}"></strong></div>
 
     <br>
   <a th:href="@{/search}" class="btn btn-primary mt-5">Go back</a>

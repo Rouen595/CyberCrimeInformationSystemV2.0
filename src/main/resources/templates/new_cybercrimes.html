@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>New Cybercrimes</title>
+
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+    <h1>Create New Cybercrimes</h1>
+    <br />
+    <form action="#" th:action="@{/save-cybercrimes}" th:object="${cybercrimes}"
+          method="post">
+
+        <table class="table table-striped">
+            <tr>
+                <td>Cybercrime ID:</td>
+                <td><input type="text" th:field="*{cybercrimeID}" /></td>
+            </tr>
+            <tr>
+                <td>Person ID:</td>
+                <td><input type="text" th:field="*{personID}" /></td>
+            </tr>
+            <tr>
+                <td>Punishment:</td>
+                <td><input type="text" th:field="*{punishment}" /></td>
+            </tr>
+            <tr>
+                <td>Arrest Date:</td>
+                <td><input type="text" th:field="*{arrestDate}" /></td>
+            </tr>
+            <tr>
+                <td>Sentencing Date:</td>
+                <td><input type="text" th:field="*{sentencingDate}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<br><br>
+
+<div th:replace="fragments/footer :: footer"/>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{assets/bootstrap-select-1.13.9/dist/js/bootstrap-select.js}"></script>
+
+</body>
+</html>

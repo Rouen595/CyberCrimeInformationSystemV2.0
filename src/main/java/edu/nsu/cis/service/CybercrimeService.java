@@ -20,7 +20,9 @@ public class CybercrimeService {
     public List<Cybercrime> retrieveAll() {
         return cybercrimeRepository.findAll();
     }
-
+    public List<String> retrieveDistinctBySeverityLevel() {
+        return cybercrimeRepository.findDistinctBySeverityLevel();
+    }
     public void save(Cybercrime cybercrime) {
         cybercrimeRepository.save(cybercrime);
     }

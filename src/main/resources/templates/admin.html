@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title th:utext="#{label.pages.admin}">admin</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
 <body>
@@ -10,18 +11,19 @@
 <div class="container">
 
     <div class="starter-template">
-        <h1>Admin page (Spring Security protected)</h1>
-
-        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
+        <h1 th:utext="#{label.pages.admin.message}">home</h1>
+        <!--<h1>Admin page (Spring Security protected)</h1>-->
+        <h2>1. <a th:href="@{/search-all}">Display All Cybercrime Table Records</a></h2>
+        <h2>2. <a th:href="@{/search-all-crimes}">Display All Cybercrimes Table Records</a></h2>
+        <h2>3. <a th:href="@{/search-all-persons}">Display All Person Table Records</a></h2>
+        <h2>4. <a th:href="@{/search-all-person-types}">Display All Person Type Table Records</a></h2>
 
     </div>
 
 </div>
 <!-- /.container -->
 
+<br><br>
 <div th:replace="fragments/footer :: footer"/>
 
 </body>

@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 @Table(name = "cybercrimes", schema = "dbo")
 public class Cybercrimes {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CybercrimesID", nullable = false)
     private Integer id;
 
