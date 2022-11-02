@@ -1,6 +1,8 @@
 package edu.nsu.cis.service;
 
 
+import edu.nsu.cis.model.db.Cybercrime;
+import edu.nsu.cis.model.db.Person;
 import edu.nsu.cis.model.db.Persontype;
 import edu.nsu.cis.repository.PersonRepository;
 import edu.nsu.cis.repository.PersonTypeRepository;
@@ -20,5 +22,17 @@ public class PersonTypeService {
     }
     public List<Persontype> retrieveAll() {
         return personTypeRepository.findAll();
+    }
+
+    public void save(Persontype persontype) {
+        personTypeRepository.save(persontype);
+    }
+
+    public Persontype get(Integer id) {
+        return personTypeRepository.findById(id).get();
+    }
+
+    public void delete(int id) {
+        personTypeRepository.deleteById(id);
     }
 }

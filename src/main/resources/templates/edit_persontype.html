@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8"/>
-  <title>Person Type List</title>
+  <title>Edit Person Type</title>
 
   <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
-  <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+  <link th:rel="stylesheet" th:href="@{webjars/bootstrap/css/bootstrap.min.css} "/>
 
   <div th:replace="fragments/header :: header-css"/>
 </head>
@@ -14,35 +14,31 @@
 <div th:replace="fragments/header :: header"/>
 
 <div class="container">
-  <div>
-    <h1>Person Type List</h1>
-    <a href="/new-persontype">Create New Person Type</a>
-    <br>
+  <h1>Edit PersonType</h1>
+  <br />
+  <form action="#" th:action="@{/save-persontype}" th:object="${persontype}"
+        method="post">
+
     <table class="table table-striped">
-      <thead>
       <tr>
-        <th>Person Type ID</th>
-        <th>Person Type</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:if="${personTypeList.empty}">
-        <td colspan="3"> No Person Type records exist! </td>
-      </tr>
-      <tr th:each="personType : ${personTypeList}">
-        <td th:text="${personType.id}"></td>
-        <td th:text="${personType.personType}"></td>
-
+        <td>PersonType ID:</td>
         <td>
-          <a th:href="@{'/edit-persontype/' + ${personType.id}}">Edit</a>
-          &nbsp;&nbsp;&nbsp;
-          <a th:href="@{'/delete-persontype/' + ${personType.id}}">Delete</a>
+          <input type="text" th:field="*{id}" />
         </td>
-
       </tr>
-      </tbody>
+
+      <tr>
+        <td>Person Type:</td>
+        <td>
+          <input type="text" th:field="*{personType}" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit">Save</button> </td>
+      </tr>
     </table>
-  </div>
+  </form>
+
 </div>
 
 <br><br>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8"/>
-  <title>New Cybercrime</title>
+  <title>New Person</title>
 
   <link th:rel="stylesheet" th:href="@{assets/bootstrap-select-1.13.9/dist/css/bootstrap-select.css}"/>
   <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
@@ -14,19 +14,43 @@
 <div th:replace="fragments/header :: header"/>
 
 <div class="container">
-  <h1>Create New Cybercrime</h1>
+  <h1>Create New Person</h1>
   <br />
-  <form action="#" th:action="@{/save-cybercrime}" th:object="${cybercrime}"
+  <form action="#" th:action="@{/save-person}" th:object="${person}"
         method="post">
 
     <table class="table table-striped">
       <tr>
-        <td>Cybercrime Type:</td>
-        <td><input type="text" th:field="*{cybercrimeType}" /></td>
+        <td>Person Type ID:</td>
+        <td><input type="text" th:field="*{personTypeID}" /></td>
       </tr>
       <tr>
-        <td>Severity:</td>
-        <td><input type="text" th:field="*{severityLevel}" /></td>
+        <td>First Name:</td>
+        <td><input type="text" th:field="*{firstName}" /></td>
+      </tr>
+      <tr>
+        <td>Last Name:</td>
+        <td><input type="text" th:field="*{lastName}" /></td>
+      </tr>
+      <tr>
+        <td>Age:</td>
+        <td><input type="text" th:field="*{age}" /></td>
+      </tr>
+      <tr>
+        <td>Street Address:</td>
+        <td><input type="text" th:field="*{streetAddress}" /></td>
+      </tr>
+      <tr>
+        <td>City:</td>
+        <td><input type="text" th:field="*{city}" /></td>
+      </tr>
+      <tr>
+        <td>State:</td>
+        <td><input type="text" th:field="*{state}" /></td>
+      </tr>
+      <tr>
+        <td>Zip Code:</td>
+        <td><input type="text" th:field="*{zipCode}" /></td>
       </tr>
       <tr>
         <td colspan="2"><button type="submit">Save</button> </td>

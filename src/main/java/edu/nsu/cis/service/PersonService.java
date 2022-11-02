@@ -2,6 +2,7 @@ package edu.nsu.cis.service;
 
 
 import edu.nsu.cis.model.db.Person;
+import edu.nsu.cis.model.db.Persontype;
 import edu.nsu.cis.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,17 @@ public class PersonService {
     }
     public List<Person> retrieveAll() {
         return personRepository.findAll();
+    }
+
+    public void save(Person person) {
+        personRepository.save(person);
+    }
+
+    public Person get(Integer id) {
+        return personRepository.findById(id).get();
+    }
+
+    public void delete(int id) {
+        personRepository.deleteById(id);
     }
 }

@@ -16,7 +16,7 @@
 <div class="container">
   <div>
     <h1>Person List</h1>
-    <!--<a href="/new">Create New Person</a>-->
+    <a href="/new-person">Create New Person</a>
     <br>
     <table class="table table-striped">
       <thead>
@@ -46,13 +46,13 @@
         <td th:text="${person.city}"></td>
         <td th:text="${person.state}"></td>
         <td th:text="${person.zipCode}"></td>
-        <!--
+
         <td>
-          <a th:href="@{'/edit/' + ${person.id}}">Edit</a>
+          <a th:href="@{'/edit-person/' + ${person.id}}">Edit</a>
           &nbsp;&nbsp;&nbsp;
-          <a th:href="@{'/delete/' + ${person.id}}">Delete</a>
+          <a th:href="@{'/delete-person/' + ${person.id}}">Delete</a>
         </td>
-        -->
+
       </tr>
       </tbody>
     </table>
