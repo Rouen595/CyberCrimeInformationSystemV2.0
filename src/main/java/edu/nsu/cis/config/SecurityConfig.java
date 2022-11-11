@@ -48,7 +48,7 @@ public class SecurityConfig {
         return http
                 .csrf().disable()
                 .authorizeRequests()
-                    .mvcMatchers("/", "index.html", "/about", "/static/**", "/resources/**", "/webjars/**").permitAll()
+                    .mvcMatchers("/", "index.html", "/about", "/static/**", "/resources/**", "/webjars/**", "/img/**").permitAll()
                     .mvcMatchers("/home.html", "/search.html", "/search-all-persons.html").hasAnyRole("ADMIN", "USER")
                     .mvcMatchers("/admin", "/admin/admin.html").hasRole("ADMIN")
                     .anyRequest().authenticated()

@@ -3,9 +3,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
   <title th:utext="#{label.pages.default.title}">index</title>
 </head>
-<body>
+<body th:style="'background-image:url(' + @{/img/home-background-image.jpg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
+  <div class="container-fluid" style="font-weight: bolder">
     <div class="navbar-header">
       <a class="navbar-brand" href="#" th:utext="#{label.pages.default.title}">home</a>
     </div>
@@ -15,5 +15,5 @@
   </div>
 </nav>
 </body>
-</html>
+
 </html>

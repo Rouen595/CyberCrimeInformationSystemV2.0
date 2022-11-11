@@ -4,7 +4,7 @@
     <title th:utext="#{label.pages.home.title}">dashboard</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
-<body>
+<body th:style="'background-image:url(' + @{/img/default-background-image.jpg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
 
 <div th:replace="fragments/header :: header"/>
 
@@ -12,10 +12,10 @@
 
   <div class="starter-template">
     <h1 th:utext="#{label.pages.home.message}">home</h1>
-    <h2>1. <a th:href="@{/search}">Search for a Cybercrime</a></h2>
-    <h2>2. <a th:href="@{/search-all}">Display All Cybercrime Table Records</a></h2>
-    <h2>3. <a th:href="@{/search-all-crimes}">Display All Cybercrimes Table Records</a></h2>
-    <h2>4. <a th:href="@{/admin}">Admin page (Need Admin Role)</a></h2>
+    <h2>1. <a th:href="@{/search}" style="color: #0e0e0e; font-weight: bolder">Search for a Cybercrime</a></h2>
+    <h2>2. <a th:href="@{/search-all}" style="color: #0e0e0e; font-weight: bolder">Display All Cybercrime Table Records</a></h2>
+    <h2>3. <a th:href="@{/search-all-crimes}" style="color: #0e0e0e; font-weight: bolder">Display All Cybercrimes Table Records</a></h2>
+    <h2>4. <a th:href="@{/admin}" style="color: #0e0e0e; font-weight: bolder">Admin page (Need Admin Role)</a></h2>
   </div>
 
 </div>
