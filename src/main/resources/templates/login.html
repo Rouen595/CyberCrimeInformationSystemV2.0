@@ -29,12 +29,12 @@
 label{padding-left:0 !important}
 </style>
 </head>
-<body>
+<body th:style="'background-image:url(' + @{/img/default-background-image.jpg} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
 <div th:if="${message != null}" class="alert alert-info" th:utext="${message}">message</div>
 <div th:if="${error != null}" class="alert alert-danger" th:utext="${session[SPRING_SECURITY_LAST_EXCEPTION]}">error</div>
 
 <nav class="navbar navbar-default">
-    <div class="container-fluid">
+    <div class="container-fluid" style="font-weight: bolder">
         <div class="navbar-header">
             <a class="navbar-brand" th:href="@{/home.html}" th:utext="#{label.pages.default.title}">home</a>
         </div>
@@ -52,7 +52,7 @@ label{padding-left:0 !important}
                  <span id="welcometext">&nbsp;</span>
                  
                  <br /><br />
-                 <label class="col-sm-4" th:utext="#{label.form.loginUser}">Username</label>
+                 <label class="col-sm-4" style="font-weight: bolder" th:utext="#{label.form.loginUser}">Username</label>
                  <span class="col-sm-8"><input class="form-control" type='text' name='username' value=''/></span>
                 
                 <br/><br/>        
