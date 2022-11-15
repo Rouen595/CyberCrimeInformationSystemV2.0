@@ -13,11 +13,15 @@ logging:
     org:
         springframework.security: debug
 
+  thymeleaf:
+    cache: false
+
+
 spring:
   datasource:
     username: cisUser
     url: 'jdbc:sqlserver://localhost;databaseName=SQLTutorial;encrypt=true;trustServerCertificate=true; '
-    password: cisUser
+    password: cisPass
   jpa:
     properties:
       hibernate:
