@@ -70,10 +70,11 @@ public class SearchController {
     */
 
     @PostMapping("/search")
-    public String viewCybercrimeResults(CyberSearchDTO cyberSearch, Model model) {
+    public String viewCybercrimeResults(CyberSearchDTO cyberSearch, Model model) throws Exception {
         model.addAttribute("cyberSearch", cyberSearch);
 
-        //List<Cybercrime> cybercrimeList = cybercrimeService.retrieveCybercrimeList("Phishing");
+        List<Cybercrimes> cybercrimesList = cybercrimesService.searchCybercrimes(
+                Integer.parseInt(cyberSearch.getCybercrimeType()), cyberSearch.getState());
 
         return "searchResults";
     }

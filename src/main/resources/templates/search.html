@@ -28,7 +28,7 @@
                         <select class="selectpicker form-control" th:field="*{cybercrimeType}"  id="cybercrimeType">
                             <option value="">Nothing selected</option>
                             <option th:each="cybercrime : ${cybercrimeList}"
-                                    th:value="${cybercrime.cybercrimeType}"
+                                    th:value="${cybercrime.id}"
                                     th:text="${cybercrime.cybercrimeType}">cybercrimeType
                             </option>
 
