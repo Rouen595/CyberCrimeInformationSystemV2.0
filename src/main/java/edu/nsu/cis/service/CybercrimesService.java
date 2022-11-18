@@ -20,6 +20,10 @@ public class CybercrimesService {
         return cybercrimesRepository.findAll();
     }
 
+    public List<Cybercrimes> searchCybercrimes(Integer id, String state) {
+        return cybercrimesRepository.searchByParameters(id, state);
+    }
+
     public void save(Cybercrimes cybercrimes) {
         cybercrimesRepository.save(cybercrimes);
     }
@@ -31,5 +35,7 @@ public class CybercrimesService {
     public void delete(int id) {
         cybercrimesRepository.deleteById(id);
     }
+
+
 
 }

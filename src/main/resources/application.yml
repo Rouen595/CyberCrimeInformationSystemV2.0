@@ -13,6 +13,10 @@ logging:
     org:
         springframework.security: debug
 
+  thymeleaf:
+    cache: false
+
+
 spring:
   datasource:
     username: cisUser
