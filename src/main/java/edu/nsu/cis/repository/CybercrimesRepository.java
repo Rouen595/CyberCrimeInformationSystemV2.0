@@ -28,8 +28,10 @@ public interface CybercrimesRepository extends JpaRepository<Cybercrimes, Intege
 //    @Query("select u from User u where u.emailAddress = ?1")
 //    User findByEmailAddress(String emailAddress);
     @Transactional(readOnly = true)
-    @Query("Select c1,p,c2 from Cybercrimes c1 join Person p on c1.personID.id = p.id join Cybercrime c2 on c1.cybercrimeID.id = c2.id where c1.cybercrimeID.id = ?1 and p.state = ?2")
-    List<Cybercrimes> searchByParameters(Integer cybercrimeId, String state);
+    @Query("Select c1,p,c2 from Cybercrimes c1 join Person p on c1.personID.id = p.id join Cybercrime c2 on c1.cybercrimeID.id = c2.id " +
+            "where c1.cybercrimeID.id = ?1 and c1.cybercrimeID.severityLevel = ?2 and c1.punishment = ?3 and c1.arrestDate = ?4 and c1.sentencingDate = ?5 " +
+            "and p.firstName = ?6 and p.lastName = ?7 and p.streetAddress = ?8 and p.city = ?9 and p.state = ?10 and p.zipCode = ?11")
+    List<Cybercrimes> searchByParameters(Integer cybercrimeId, String severity, String punishment, String arrest, String sentence, String firstName, String lastName, String address, String city, String state, String zip);
 
 
 //    Select c1.CybercrimesID, c1.CybercrimeID, c1.ArrestDate, c1.SentencingDate, c1.Punishment, c1.PersonID,

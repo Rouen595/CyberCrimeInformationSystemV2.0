@@ -20,8 +20,9 @@ public class CybercrimesService {
         return cybercrimesRepository.findAll();
     }
 
-    public List<Cybercrimes> searchCybercrimes(Integer id, String state) {
-        return cybercrimesRepository.searchByParameters(id, state);
+    public List<Cybercrimes> searchCybercrimes(Integer id, String severity, String punishment, String arrest, String sentence,
+                                               String firstName, String lastName, String address, String city, String state, String zip) {
+        return cybercrimesRepository.searchByParameters(id, severity, punishment, arrest, sentence, firstName, lastName, address, city, state, zip);
     }
 
     public void save(Cybercrimes cybercrimes) {

@@ -74,7 +74,15 @@ public class SearchController {
         model.addAttribute("cyberSearch", cyberSearch);
 
         List<Cybercrimes> cybercrimesList = cybercrimesService.searchCybercrimes(
-                Integer.parseInt(cyberSearch.getCybercrimeType()), cyberSearch.getState());
+                Integer.parseInt(cyberSearch.getCybercrimeType()), cyberSearch.getSeverityLevel(), cyberSearch.getPunishment(), cyberSearch.getArrestDate(),
+                cyberSearch.getSentencingDate(), cyberSearch.getFirstName(), cyberSearch.getLastName(), cyberSearch.getStreetAddress(), cyberSearch.getCity(), cyberSearch.getState(),
+                cyberSearch.getZipcode());
+
+        // if you look at the console when it performs the query, only the part with the cybercrime id is given a value to search for, the rest all have "?"
+
+        for (int i = 0; i < cybercrimesList.size(); i++) {
+            System.out.println(cybercrimesList.get(i));
+        }
 
         return "searchResults";
     }
