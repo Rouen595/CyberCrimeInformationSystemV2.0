@@ -1,5 +1,6 @@
 package edu.nsu.cis.controller;
 
+import edu.nsu.cis.model.CyberResultDTO;
 import edu.nsu.cis.model.CyberSearchDTO;
 import edu.nsu.cis.model.db.Cybercrime;
 import edu.nsu.cis.model.db.Cybercrimes;
@@ -50,6 +51,7 @@ public class SearchController {
         List<Persontype> persontypeList = personTypeService.retrieveAll();
 
         model.addAttribute("cyberSearch", new CyberSearchDTO());
+        model.addAttribute("cyberResult", new CyberResultDTO());
         model.addAttribute("cybercrimeList", cybercrimeList);
         model.addAttribute("cybercrimesList", cybercrimesList);
         model.addAttribute("cybercrimeBySeverityLevelList", cybercrimeBySeverityLevelList);
@@ -71,20 +73,23 @@ public class SearchController {
     */
 
     @PostMapping("/search")
-    public String viewCybercrimeResults(CyberSearchDTO cyberSearch, Model model) throws Exception {
+    public String viewCybercrimeResults(CyberSearchDTO cyberSearch, CyberResultDTO cyberResult, Model model) throws Exception {
         model.addAttribute("cyberSearch", cyberSearch);
 
-        List<Cybercrimes> cybercrimesList = cybercrimesService.searchCybercrimes(
+
+        List<Cybercrimes> CyberCrimesList = cybercrimesService.searchCybercrimes(
                 StringUtils.isNotBlank(cyberSearch.getCybercrimeType()) ? Integer.parseInt(cyberSearch.getCybercrimeType()) : 0,
                 cyberSearch.getSeverityLevel(), cyberSearch.getPunishment(), cyberSearch.getArrestDate(),
                 cyberSearch.getSentencingDate(), cyberSearch.getFirstName(), cyberSearch.getLastName(), cyberSearch.getStreetAddress(), cyberSearch.getCity(), cyberSearch.getState(),
                 cyberSearch.getZipcode());
 
+        model.addAttribute("cyberResult", CyberCrimesList);
         // if you look at the console when it performs the query, only the part with the cybercrime id is given a value to search for, the rest all have "?"
 
+        /*
         for (int i = 0; i < cybercrimesList.size(); i++) {
             System.out.println(cybercrimesList.get(i));
-        }
+        }*/
 
         return "searchResults";
     }
