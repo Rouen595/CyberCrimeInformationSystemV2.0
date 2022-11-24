@@ -9,7 +9,21 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CyberResultDTO {
 
-    /* for expansion
+
+    public CyberResultDTO(Integer cybercrimeID, String firstName, String lastName, String state, String city, String severityLevel, String punishment, String arrestDate, String sentencingDate) {
+        this.cybercrimeID = cybercrimeID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.state = state;
+        this.city = city;
+        this.severityLevel = severityLevel;
+        this.punishment = punishment;
+        this.arrestDate = arrestDate;
+        this.sentencingDate = sentencingDate;
+    }
+
+
+   /* for expansion
     private String cybercrimeID;
     private String cybercrimeType;
 
@@ -24,10 +38,12 @@ public class CyberResultDTO {
     private String sentencingDate;
     * */
 
-    private String cybercrimeID;
-    private String cybercrimeType;
+    private Integer cybercrimeID;
+    //private String cybercrimeType;
 
-    private String name;
+    private String firstName;
+    private String lastName;
+    //private String name;
 
     private String state;
     private String city;

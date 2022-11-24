@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class SearchController {
@@ -51,7 +52,7 @@ public class SearchController {
         List<Persontype> persontypeList = personTypeService.retrieveAll();
 
         model.addAttribute("cyberSearch", new CyberSearchDTO());
-        model.addAttribute("cyberResult", new CyberResultDTO());
+        //model.addAttribute("cyberResult", new CyberResultDTO());
         model.addAttribute("cybercrimeList", cybercrimeList);
         model.addAttribute("cybercrimesList", cybercrimesList);
         model.addAttribute("cybercrimeBySeverityLevelList", cybercrimeBySeverityLevelList);
@@ -73,23 +74,47 @@ public class SearchController {
     */
 
     @PostMapping("/search")
-    public String viewCybercrimeResults(CyberSearchDTO cyberSearch, CyberResultDTO cyberResult, Model model) throws Exception {
+    public String viewCybercrimeResults(CyberSearchDTO cyberSearch, Model model) throws Exception {
         model.addAttribute("cyberSearch", cyberSearch);
+        //model.addAttribute("cyberResult", new CyberResultDTO());
 
+        /*
+        List<CyberResultDTO> cybercrimesList = cybercrimesService.searchCybercrimes(
+                StringUtils.isNotBlank(cyberSearch.getCybercrimeType()) ? Integer.parseInt(cyberSearch.getCybercrimeType()) : 0,
+                cyberSearch.getSeverityLevel(), cyberSearch.getPunishment(), cyberSearch.getArrestDate(),
+                cyberSearch.getSentencingDate(), cyberSearch.getFirstName(), cyberSearch.getLastName(), cyberSearch.getStreetAddress(), cyberSearch.getCity(), cyberSearch.getState(),
+                cyberSearch.getZipcode());
+        */
 
-        List<Cybercrimes> CyberCrimesList = cybercrimesService.searchCybercrimes(
+        /*
+        List<Cybercrimes> cyberResultsList = cybercrimesService.searchCybercrimes(
+                Integer.parseInt(cyberSearch.getCybercrimeType()), cyberSearch.getSeverityLevel(),
+                cyberSearch.getPunishment(), cyberSearch.getArrestDate(), cyberSearch.getSentencingDate(),
+                cyberSearch.getFirstName(), cyberSearch.getLastName());
+        */
+        List<Cybercrimes> cyberResultsList = cybercrimesService.searchCybercrimes(
                 StringUtils.isNotBlank(cyberSearch.getCybercrimeType()) ? Integer.parseInt(cyberSearch.getCybercrimeType()) : 0,
                 cyberSearch.getSeverityLevel(), cyberSearch.getPunishment(), cyberSearch.getArrestDate(),
                 cyberSearch.getSentencingDate(), cyberSearch.getFirstName(), cyberSearch.getLastName(), cyberSearch.getStreetAddress(), cyberSearch.getCity(), cyberSearch.getState(),
                 cyberSearch.getZipcode());
 
-        model.addAttribute("cyberResult", CyberCrimesList);
+
+        List<CyberResultDTO> cyberResultDTOList = cybercrimesService.searchCybercrimesDTO(
+                StringUtils.isNotBlank(cyberSearch.getCybercrimeType()) ? Integer.parseInt(cyberSearch.getCybercrimeType()) : 0,
+                cyberSearch.getSeverityLevel(), cyberSearch.getPunishment(), cyberSearch.getArrestDate(),
+                cyberSearch.getSentencingDate(), cyberSearch.getFirstName(), cyberSearch.getLastName(), cyberSearch.getStreetAddress(), cyberSearch.getCity(), cyberSearch.getState(),
+                cyberSearch.getZipcode());
+
+        System.out.println(cyberResultsList);
+
+        model.addAttribute("cyberResult", cyberResultsList);
+
         // if you look at the console when it performs the query, only the part with the cybercrime id is given a value to search for, the rest all have "?"
 
-        /*
-        for (int i = 0; i < cybercrimesList.size(); i++) {
-            System.out.println(cybercrimesList.get(i));
-        }*/
+
+        //for (int i = 0; i < cybercrimesList.size(); i++) {
+        //    System.out.println(cybercrimesList.get(i));
+        //}
 
         return "searchResults";
     }

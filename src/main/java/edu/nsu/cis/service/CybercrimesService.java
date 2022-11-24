@@ -1,5 +1,6 @@
 package edu.nsu.cis.service;
 
+import edu.nsu.cis.model.CyberResultDTO;
 import edu.nsu.cis.model.db.Cybercrime;
 import edu.nsu.cis.model.db.Cybercrimes;
 import edu.nsu.cis.repository.CybercrimesRepository;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CybercrimesService {
@@ -18,9 +20,14 @@ public class CybercrimesService {
     }
 
     //switching to search by params instead of parameters
-    public List<Cybercrimes> searchCybercrimes(Integer id, String severity, String punishment, String arrest, String sentence,
-                                               String firstName, String lastName, String address, String city, String state, String zip) {
+    public List<Cybercrimes> searchCybercrimes(Integer id, String severity, String punishment, String arrest, String sentence, String firstName, String lastName,
+                                               String address, String city, String state, String zip) {
         return cybercrimesRepository.searchByParams(id, severity, punishment, arrest, sentence, firstName, lastName, address, city, state, zip);
+    }
+
+    public List<CyberResultDTO> searchCybercrimesDTO(Integer id, String severity, String punishment, String arrest, String sentence, String firstName, String lastName,
+                                               String address, String city, String state, String zip) {
+        return cybercrimesRepository.searchByParam(id, severity, punishment, arrest, sentence, firstName, lastName, address, city, state, zip);
     }
 
     public void save(Cybercrimes cybercrimes) {

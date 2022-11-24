@@ -8,24 +8,30 @@
 
 <div th:replace="fragments/header :: header"/>
 
-
 <div class="container">
-  <div class="mt-5">Cybercrime: <strong th:text="${cyberSearch.cybercrimeType}"></strong></div>
-  <div>Severity: <strong th:text="${cyberSearch.severityLevel}"></strong></div>
-    <div>Punishment: <strong th:text="${cyberSearch.punishment}"></strong></div>
-    <div>Arrest Date: <strong th:text="${cyberSearch.arrestDate}"></strong></div>
-    <div>Sentencing Date: <strong th:text="${cyberSearch.sentencingDate}"></strong></div>
-    <div>First Name: <strong th:text="${cyberSearch.firstName}"></strong></div>
-    <div>Last Name: <strong th:text="${cyberSearch.lastName}"></strong></div>
-    <div>Age: <strong th:text="${cyberSearch.age}"></strong></div>
-    <div>Street Address: <strong th:text="${cyberSearch.streetAddress}"></strong></div>
-    <div>City: <strong th:text="${cyberSearch.city}"></strong></div>
-    <div>State: <strong th:text="${cyberSearch.state}"></strong></div>
-    <div>Zipcode: <strong th:text="${cyberSearch.zipcode}"></strong></div>
-    <div>Person Type: <strong th:text="${cyberSearch.personType}"></strong></div>
-
+  <div>
+    <h1>Cybercrime Search Results</h1>
     <br>
-  <a th:href="@{/search}" class="btn btn-primary mt-5">Go back</a>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Cybercrimes ID</th>
+        <th>Cybercrime Type</th>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:if="${#lists.isEmpty(cyberResult)}">
+        <td colspan="3"> No Cybercrime Results! </td>
+      </tr>
+      <tr th:each="cyberCrimes : ${cyberResult}">
+        <td th:text="${cyberCrimes.id}"></td>
+        <td th:text="${cyberCrimes.getCybercrimeID().cybercrimeType}"></td>
+        <td th:text="${cyberCrimes.getPersonID().firstName + ' ' + cyberCrimes.getPersonID().lastName}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <br><br>
