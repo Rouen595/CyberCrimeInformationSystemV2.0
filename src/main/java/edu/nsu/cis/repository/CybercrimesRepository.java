@@ -105,24 +105,6 @@ public interface CybercrimesRepository extends JpaRepository<Cybercrimes, Intege
     List<Cybercrimes> searchByParams(Integer cybercrimeId, String severity, String punishment, String arrest,
                                      String sentence, String firstName, String lastName, String address, String city, String state, String zip);
 
-    @Transactional(readOnly = true)
-    @Query(value = "Select new edu.nsu.cis.model.CyberResultDTO(c1.cybercrimeID.id, p.firstName, p.lastName, p.state, p.city, c2.severityLevel" +
-            ", c1.punishment, c1.arrestDate, c1.sentencingDate) " +
-            "from Cybercrimes c1 join Person p on c1.personID.id = p.id join Cybercrime c2 on c1.cybercrimeID.id = c2.id join Persontype pt on p.id = pt.id " +
-            "where c1.cybercrimeID.id = ?1 " +
-            "AND (?2 like '' or  c1.cybercrimeID.severityLevel = ?2) " +
-            "AND (?3 like '' or c1.punishment = ?3) " +
-            "AND (?4 like '' or c1.arrestDate = ?4) " +
-            "AND (?5 like '' or c1.sentencingDate = ?5) " +
-            "AND (?6 like '' or p.firstName = ?6) " +
-            "AND (?7 like '' or p.lastName =?7)" +
-            "AND (?8 like '' or p.streetAddress = ?8) " +
-            "AND (?9 like '' or p.city = ?9) " +
-            "AND (?10 like '' or p.state = ?10) " +
-            "AND (?11 like '' or p.zipCode = ?11) ")
-    List<CyberResultDTO> searchByParam(Integer cybercrimeId, String severity, String punishment, String arrest,
-                                String sentence, String firstName, String lastName, String address, String city, String state, String zip);
-
     //(?2 is null or c1.cybercrimeID.severityLevel = ?2)
 
 //    Select c1.CybercrimesID, c1.CybercrimeID, c1.ArrestDate, c1.SentencingDate, c1.Punishment, c1.PersonID,

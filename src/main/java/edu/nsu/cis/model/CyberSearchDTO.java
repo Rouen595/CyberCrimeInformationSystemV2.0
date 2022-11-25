@@ -24,6 +24,6 @@ public class CyberSearchDTO {
   private String state;
   private String zipcode;
 
-  private String personType;
+  //private String personType;
 
 }

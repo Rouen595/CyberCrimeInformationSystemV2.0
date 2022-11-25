@@ -25,11 +25,6 @@ public class CybercrimesService {
         return cybercrimesRepository.searchByParams(id, severity, punishment, arrest, sentence, firstName, lastName, address, city, state, zip);
     }
 
-    public List<CyberResultDTO> searchCybercrimesDTO(Integer id, String severity, String punishment, String arrest, String sentence, String firstName, String lastName,
-                                               String address, String city, String state, String zip) {
-        return cybercrimesRepository.searchByParam(id, severity, punishment, arrest, sentence, firstName, lastName, address, city, state, zip);
-    }
-
     public void save(Cybercrimes cybercrimes) {
         cybercrimesRepository.save(cybercrimes);
     }
