@@ -1,5 +1,6 @@
 package edu.nsu.cis.controller;
 
+
 import edu.nsu.cis.model.CyberSearchDTO;
 import edu.nsu.cis.model.db.Cybercrime;
 import edu.nsu.cis.model.db.Cybercrimes;
@@ -11,7 +12,6 @@ import edu.nsu.cis.service.PersonService;
 import edu.nsu.cis.service.PersonTypeService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,14 +33,6 @@ public class SearchController {
     @Autowired
     private PersonTypeService personTypeService;
 
-    /*
-    @GetMapping("/search")
-    public String searchCybercrime(Model model) {
-        model.addAttribute("cyberSearch", new CyberSearch());
-        return "/search";
-    }
-    */
-
     @GetMapping("/search")
     public String searchAll(Model model) {
         List<Cybercrime> cybercrimeList = cybercrimeService.retrieveAll();
@@ -49,42 +41,34 @@ public class SearchController {
         List<Person> personList = personService.retrieveAll();
         List<Persontype> persontypeList = personTypeService.retrieveAll();
 
+        String[] statelist = {"AK","AL","AR","AZ","CA","CO","CT","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA",
+                "MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY"};
+
         model.addAttribute("cyberSearch", new CyberSearchDTO());
         model.addAttribute("cybercrimeList", cybercrimeList);
         model.addAttribute("cybercrimesList", cybercrimesList);
         model.addAttribute("cybercrimeBySeverityLevelList", cybercrimeBySeverityLevelList);
         model.addAttribute("personList", personList);
         model.addAttribute("persontypeList", persontypeList);
+        model.addAttribute("stateList", statelist);
 
         return "/search";
     }
-
-    /*
-    @PostMapping("/search")
-    public String viewCybercrimeResults(CyberSearch cyberSearch, Model model) {
-        model.addAttribute("cyberSearch", cyberSearch);
-
-        //List<Cybercrime> cybercrimeList = cybercrimeService.retrieveCybercrimeList("Phishing");
-
-        return "searchResults";
-    }
-    */
 
     @PostMapping("/search")
     public String viewCybercrimeResults(CyberSearchDTO cyberSearch, Model model) throws Exception {
         model.addAttribute("cyberSearch", cyberSearch);
 
-        List<Cybercrimes> cybercrimesList = cybercrimesService.searchCybercrimes(
+        System.out.println(cyberSearch.getState());
+
+        List<Cybercrimes> cyberResultsList = cybercrimesService.searchCybercrimes(
                 StringUtils.isNotBlank(cyberSearch.getCybercrimeType()) ? Integer.parseInt(cyberSearch.getCybercrimeType()) : 0,
                 cyberSearch.getSeverityLevel(), cyberSearch.getPunishment(), cyberSearch.getArrestDate(),
                 cyberSearch.getSentencingDate(), cyberSearch.getFirstName(), cyberSearch.getLastName(), cyberSearch.getStreetAddress(), cyberSearch.getCity(), cyberSearch.getState(),
                 cyberSearch.getZipcode());
 
-        // if you look at the console when it performs the query, only the part with the cybercrime id is given a value to search for, the rest all have "?"
 
-        for (int i = 0; i < cybercrimesList.size(); i++) {
-            System.out.println(cybercrimesList.get(i));
-        }
+        model.addAttribute("cyberResult", cyberResultsList);
 
         return "searchResults";
     }

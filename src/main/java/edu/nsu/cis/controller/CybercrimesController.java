@@ -51,4 +51,12 @@ public class CybercrimesController {
         return "/home";
     }
 
+    @RequestMapping("/view-cybercrimes/{id}")
+    public ModelAndView showViewCybercrimePage(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("view_cybercrimes");
+        Cybercrimes cybercrimes = cybercrimesService.get(id);
+        mav.addObject("cybercrimes", cybercrimes);
+        return mav;
+    }
+
 }
