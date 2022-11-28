@@ -20,9 +20,9 @@ public class CybercrimesService {
     }
 
     //switching to search by params instead of parameters
-    public List<Cybercrimes> searchCybercrimes(Integer id, String severity, String punishment, String arrest, String sentence, String firstName, String lastName,
+    public List<Cybercrimes> searchCybercrimes(Integer id, String punishment, String arrest, String sentence, String firstName, String lastName,
                                                String address, String city, String state, String zip) {
-        return cybercrimesRepository.searchByParams(id, severity, punishment, arrest, sentence, firstName, lastName, address, city, state, zip);
+        return cybercrimesRepository.searchByParams(id, punishment, arrest, sentence, firstName, lastName, address, city, state, zip);
     }
 
     public void save(Cybercrimes cybercrimes) {

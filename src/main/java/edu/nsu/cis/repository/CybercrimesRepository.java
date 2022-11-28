@@ -92,17 +92,16 @@ public interface CybercrimesRepository extends JpaRepository<Cybercrimes, Intege
     @Query(value = "SELECT c1 " +
             "from Cybercrimes c1 join Person p on c1.personID.id = p.id join Cybercrime c2 on c1.cybercrimeID.id = c2.id " +
             "where c1.cybercrimeID.id = ?1 " +
-            "AND (?2 like '' or  c1.cybercrimeID.severityLevel = ?2) " +
-            "AND (?3 like '' or c1.punishment = ?3) " +
-            "AND (?4 like '' or c1.arrestDate = ?4) " +
-            "AND (?5 like '' or c1.sentencingDate = ?5) " +
-            "AND (?6 like '' or p.firstName = ?6) " +
-            "AND (?7 like '' or p.lastName =?7)" +
-            "AND (?8 like '' or p.streetAddress = ?8) " +
-            "AND (?9 like '' or p.city = ?9) " +
-            "AND (?10 like '' or p.state = ?10) " +
-            "AND (?11 like '' or p.zipCode = ?11) ")
-    List<Cybercrimes> searchByParams(Integer cybercrimeId, String severity, String punishment, String arrest,
+            "AND (?2 like '' or c1.punishment = ?2) " +
+            "AND (?3 like '' or c1.arrestDate = ?3) " +
+            "AND (?4 like '' or c1.sentencingDate = ?4) " +
+            "AND (?5 like '' or p.firstName = ?5) " +
+            "AND (?6 like '' or p.lastName =?6)" +
+            "AND (?7 like '' or p.streetAddress = ?7) " +
+            "AND (?8 like '' or p.city = ?8) " +
+            "AND (?9 like '' or p.state = ?9) " +
+            "AND (?10 like '' or p.zipCode = ?10) ")
+    List<Cybercrimes> searchByParams(Integer cybercrimeId, String punishment, String arrest,
                                      String sentence, String firstName, String lastName, String address, String city, String state, String zip);
 
     //(?2 is null or c1.cybercrimeID.severityLevel = ?2)

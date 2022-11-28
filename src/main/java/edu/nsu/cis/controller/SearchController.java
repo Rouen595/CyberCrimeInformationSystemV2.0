@@ -37,7 +37,7 @@ public class SearchController {
     public String searchAll(Model model) {
         List<Cybercrime> cybercrimeList = cybercrimeService.retrieveAll();
         List<Cybercrimes> cybercrimesList = cybercrimesService.retrieveAll();
-        List<String> cybercrimeBySeverityLevelList = cybercrimeService.retrieveDistinctBySeverityLevel();
+        //List<String> cybercrimeBySeverityLevelList = cybercrimeService.retrieveDistinctBySeverityLevel();
         List<Person> personList = personService.retrieveAll();
         List<Persontype> persontypeList = personTypeService.retrieveAll();
 
@@ -47,7 +47,7 @@ public class SearchController {
         model.addAttribute("cyberSearch", new CyberSearchDTO());
         model.addAttribute("cybercrimeList", cybercrimeList);
         model.addAttribute("cybercrimesList", cybercrimesList);
-        model.addAttribute("cybercrimeBySeverityLevelList", cybercrimeBySeverityLevelList);
+        //model.addAttribute("cybercrimeBySeverityLevelList", cybercrimeBySeverityLevelList);
         model.addAttribute("personList", personList);
         model.addAttribute("persontypeList", persontypeList);
         model.addAttribute("stateList", statelist);
@@ -63,7 +63,7 @@ public class SearchController {
 
         List<Cybercrimes> cyberResultsList = cybercrimesService.searchCybercrimes(
                 StringUtils.isNotBlank(cyberSearch.getCybercrimeType()) ? Integer.parseInt(cyberSearch.getCybercrimeType()) : 0,
-                cyberSearch.getSeverityLevel(), cyberSearch.getPunishment(), cyberSearch.getArrestDate(),
+                cyberSearch.getPunishment(), cyberSearch.getArrestDate(),
                 cyberSearch.getSentencingDate(), cyberSearch.getFirstName(), cyberSearch.getLastName(), cyberSearch.getStreetAddress(), cyberSearch.getCity(), cyberSearch.getState(),
                 cyberSearch.getZipcode());
 
