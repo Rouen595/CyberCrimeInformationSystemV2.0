@@ -9,22 +9,23 @@
 
     <div th:replace="fragments/header :: header-css"/>
 </head>
-<body>
+<body th:style="'height: 100%; margin: 0; background-image: linear-gradient(rgb(168, 235, 238),rgb(0, 39, 58)); background-repeat: no-repeat; background-attachment: fixed;'">
 
 <div th:replace="fragments/header :: header"/>
 
 <div class="starter-template">
-    <h1>Enter Search Parameters</h1>
-    <br>
 
+    <div th:style="'margin: auto; text-align:left; width:1200px; border:5px solid; background-color: white;'">
     <div class="container">
+        <h1>Enter Search Parameters</h1>
+        <br>
 
         <div class="row">
             <div class="col-md-4 mt-5">
                 <form method="post" th:object="${cyberSearch}">
 
                     <div class="form-group">
-                        <label for="cybercrimeType">Select Cybercrime</label>
+                        <label for="cybercrimeType">Cybercrime</label>
                         <select class="selectpicker form-control" th:field="*{cybercrimeType}"  id="cybercrimeType">
                             <option value="">Nothing selected</option>
                             <option th:each="cybercrime : ${cybercrimeList}"
@@ -35,20 +36,9 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="severityLevel">Select Severity</label>
-                        <select class="selectpicker form-control" th:field="*{severityLevel}"  id="severityLevel">
-                            <option value="">Nothing selected</option>
-                            <option th:each="severitylevel : ${cybercrimeBySeverityLevelList}"
-                                    th:value="${severitylevel}"
-                                    th:text="${severitylevel}">severityLevel
-                            </option>
-
-                        </select>
-                    </div>
 
                     <div class="form-group">
-                        <label for="punishment">Select Punishment</label>
+                        <label for="punishment">Punishment</label>
                         <select class="selectpicker form-control" th:field="*{punishment}"  id="punishment">
                             <option value="">Nothing selected</option>
                             <option th:each="cybercrimes : ${cybercrimesList}"
@@ -60,7 +50,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="arrestDate">Select Arrest Date</label>
+                        <label for="arrestDate">Arrest Date</label>
                         <select class="selectpicker form-control" th:field="*{arrestDate}"  id="arrestDate">
                             <option value="">Nothing selected</option>
                             <option th:each="cybercrimes : ${cybercrimesList}"
@@ -72,7 +62,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="sentencingDate">Select Sentencing Date</label>
+                        <label for="sentencingDate">Sentencing Date</label>
                         <select class="selectpicker form-control" th:field="*{sentencingDate}"  id="sentencingDate">
                             <option value="">Nothing selected</option>
                             <option th:each="cybercrimes : ${cybercrimesList}"
@@ -85,7 +75,7 @@
 
 
                     <div class="form-group">
-                        <label for="firstName">Select First Name</label>
+                        <label for="firstName">First Name</label>
                         <select class="selectpicker form-control" th:field="*{firstName}"  id="firstName">
                             <option value="">Nothing selected</option>
                             <option th:each="person : ${personList}"
@@ -97,7 +87,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="lastName">Select Last Name</label>
+                        <label for="lastName">Last Name</label>
                         <select class="selectpicker form-control" th:field="*{lastName}"  id="lastName">
                             <option value="">Nothing selected</option>
                             <option th:each="person : ${personList}"
@@ -109,7 +99,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="age">Select Age</label>
+                        <label for="age">Age</label>
                         <select class="selectpicker form-control" th:field="*{age}"  id="age">
                             <option value="">Nothing selected</option>
                             <option th:each="person : ${personList}"
@@ -121,7 +111,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="streetAddress">Select Street Address</label>
+                        <label for="streetAddress">Street Address</label>
                         <select class="selectpicker form-control" th:field="*{streetAddress}"  id="streetAddress">
                             <option value="">Nothing selected</option>
                             <option th:each="person : ${personList}"
@@ -133,7 +123,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="city">Select City</label>
+                        <label for="city">City</label>
                         <select class="selectpicker form-control" th:field="*{city}"  id="city">
                             <option value="">Nothing selected</option>
                             <option th:each="person : ${personList}"
@@ -145,19 +135,19 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="state">Select State</label>
+                        <label for="state">State</label>
                         <select class="selectpicker form-control" th:field="*{state}"  id="state">
                             <option value="">Nothing selected</option>
-                            <option th:each="person : ${personList}"
-                                    th:value="${person.state}"
-                                    th:text="${person.state}">state
+                            <option th:each="State : ${stateList}"
+                                    th:value="${State}"
+                                    th:text="${State}">state
                             </option>
 
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="zipcode">Select Zipcode</label>
+                        <label for="zipcode">Zipcode</label>
                         <select class="selectpicker form-control" th:field="*{zipcode}"  id="zipcode">
                             <option value="">Nothing selected</option>
                             <option th:each="person : ${personList}"
@@ -168,29 +158,21 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="persontype">Select Person Type</label>
-                        <select class="selectpicker form-control" th:field="*{personType}"  id="persontype">
-                            <option value="">Nothing selected</option>
-                            <option th:each="persontype : ${persontypeList}"
-                                    th:value="${persontype.personType}"
-                                    th:text="${persontype.personType}">personType
-                            </option>
-
-                        </select>
-                    </div>
-
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <input class="btn btn-primary" type="submit" name="submit" th:field="*{submit}" value="Submit">
+                    <input class="btn btn-primary" type="submit" name="cancel" th:field="*{cancel}" value="Cancel">
                 </form>
             </div>
         </div>
 
     </div>
+        <br><br>
+        <div th:replace="fragments/footer :: footer"/>
+    </div>
 </div>
 
 <br><br>
 
-<div th:replace="fragments/footer :: footer"/>
+
 
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

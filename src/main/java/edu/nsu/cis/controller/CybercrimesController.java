@@ -24,9 +24,14 @@ public class CybercrimesController {
     }
 
     @RequestMapping(value = "/save-cybercrimes", method = RequestMethod.POST)
-    public String saveCybercrimes(@ModelAttribute("cybercrimes") Cybercrimes cybercrimes) {
+    public ModelAndView saveCybercrimes(@ModelAttribute("cybercrimes") Cybercrimes cybercrimes) {
         cybercrimesService.save(cybercrimes);
-        return "/home";
+
+        List<Cybercrimes> cybercrimesList = cybercrimesService.retrieveAll();
+        ModelAndView mav = new ModelAndView("cybercrimesList");
+        mav.addObject("cybercrimesList", cybercrimesList);
+
+        return mav;
     }
 
     @RequestMapping("/new-cybercrimes")
@@ -46,9 +51,22 @@ public class CybercrimesController {
     }
 
     @RequestMapping("/delete-cybercrimes/{id}")
-    public String deleteCybercrimes(@PathVariable(name = "id") int id) {
+    public ModelAndView deleteCybercrimes(@PathVariable(name = "id") int id) {
         cybercrimesService.delete(id);
-        return "/home";
+
+        List<Cybercrimes> cybercrimesList = cybercrimesService.retrieveAll();
+        ModelAndView mav = new ModelAndView("cybercrimesList");
+        mav.addObject("cybercrimesList", cybercrimesList);
+
+        return mav;
+    }
+
+    @RequestMapping("/view-cybercrimes/{id}")
+    public ModelAndView showViewCybercrimePage(@PathVariable(name = "id") int id) {
+        ModelAndView mav = new ModelAndView("view_cybercrimes");
+        Cybercrimes cybercrimes = cybercrimesService.get(id);
+        mav.addObject("cybercrimes", cybercrimes);
+        return mav;
     }
 
 }
