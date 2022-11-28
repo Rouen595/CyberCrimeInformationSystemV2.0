@@ -69,6 +69,7 @@ public class SearchController {
                 cyberSearch.getZipcode());
 
 
+
         model.addAttribute("cyberResult", cyberResultsList);
 
         return "searchResults";

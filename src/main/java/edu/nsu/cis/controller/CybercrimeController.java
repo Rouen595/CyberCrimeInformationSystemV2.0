@@ -22,11 +22,15 @@ public class CybercrimeController {
         return "cybercrimeList";
     }
 
-
     @RequestMapping(value = "/save-cybercrime", method = RequestMethod.POST)
-    public String saveCybercrime(@ModelAttribute("cybercrime") Cybercrime cybercrime) {
+    public ModelAndView saveCybercrime(@ModelAttribute("cybercrime") Cybercrime cybercrime) {
         cybercrimeService.save(cybercrime);
-        return "/home";
+
+        List<Cybercrime> cybercrimeList = cybercrimeService.retrieveAll();
+        ModelAndView mav = new ModelAndView("cybercrimeList");
+        mav.addObject("cybercrimeList", cybercrimeList);
+
+        return mav;
     }
 
     @RequestMapping("/new-cybercrime")
