@@ -4,10 +4,11 @@
     <title th:utext="#{label.pages.admin}">admin</title>
     <div th:replace="fragments/header :: header-css"/>
 </head>
-<body>
+<body th:style="'height: 100%; margin: 0; background-image: linear-gradient(rgb(168, 235, 238),rgb(0, 39, 58)); background-repeat: no-repeat; background-attachment: fixed;'">
 
 <div th:replace="fragments/header :: header"/>
 
+<div th:style="'margin: auto; text-align:left; width:1200px; border:5px solid; background-color: white;'">
 <div class="container">
 
     <div class="starter-template">
@@ -25,6 +26,6 @@
 
 <br><br>
 <div th:replace="fragments/footer :: footer"/>
-
+</div>
 </body>
 </html>
