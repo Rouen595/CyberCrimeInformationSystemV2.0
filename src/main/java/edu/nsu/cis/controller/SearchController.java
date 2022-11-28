@@ -55,11 +55,12 @@ public class SearchController {
         return "/search";
     }
 
-    @PostMapping("/search")
+    @PostMapping("/search" )
     public String viewCybercrimeResults(CyberSearchDTO cyberSearch, Model model) throws Exception {
         model.addAttribute("cyberSearch", cyberSearch);
 
-        System.out.println(cyberSearch.getState());
+        // Check for Cancel
+        if (StringUtils.isNotBlank(cyberSearch.getCancel())) return "home";
 
         List<Cybercrimes> cyberResultsList = cybercrimesService.searchCybercrimes(
                 StringUtils.isNotBlank(cyberSearch.getCybercrimeType()) ? Integer.parseInt(cyberSearch.getCybercrimeType()) : 0,
