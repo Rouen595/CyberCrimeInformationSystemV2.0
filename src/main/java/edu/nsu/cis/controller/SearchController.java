@@ -16,7 +16,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -56,7 +59,7 @@ public class SearchController {
     }
 
     @PostMapping("/search" )
-    public String viewCybercrimeResults(CyberSearchDTO cyberSearch, Model model) throws Exception {
+    public String viewCybercrimeResults(CyberSearchDTO cyberSearch, Model model, HttpSession session) throws Exception {
         model.addAttribute("cyberSearch", cyberSearch);
 
         // Check for Cancel
@@ -68,11 +71,23 @@ public class SearchController {
                 cyberSearch.getSentencingDate(), cyberSearch.getFirstName(), cyberSearch.getLastName(), cyberSearch.getStreetAddress(), cyberSearch.getCity(), cyberSearch.getState(),
                 cyberSearch.getZipcode());
 
-
-
         model.addAttribute("cyberResult", cyberResultsList);
+        session.setAttribute("cyberResult", cyberResultsList);
 
         return "searchResults";
+    }
+
+    @GetMapping("/searchResults-Refresh")
+    public ModelAndView searchResultsRefresh(HttpSession session) {
+
+        // Retrieve previously generated Search Results List from Session
+        List<Cybercrimes> cyberResultsList = new ArrayList<>();
+        if (session.getAttribute("cyberResult") != null) {
+            cyberResultsList = (List<Cybercrimes>) session.getAttribute("cyberResult");
+        }
+
+        ModelAndView mav = new ModelAndView("searchResults", "cyberResult", cyberResultsList);
+        return mav;
     }
 
 }
