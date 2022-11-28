@@ -50,9 +50,14 @@ public class CybercrimeController {
     }
 
     @RequestMapping("/delete-cybercrime/{id}")
-    public String deleteCybercrime(@PathVariable(name = "id") int id) {
+    public ModelAndView deleteCybercrime(@PathVariable(name = "id") int id) {
         cybercrimeService.delete(id);
-        return "/home";
+
+        List<Cybercrime> cybercrimeList = cybercrimeService.retrieveAll();
+        ModelAndView mav = new ModelAndView("cybercrimeList");
+        mav.addObject("cybercrimeList", cybercrimeList);
+
+        return mav;
     }
 
 }
