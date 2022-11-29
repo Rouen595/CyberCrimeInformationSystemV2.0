@@ -1,5 +1,6 @@
 package edu.nsu.cis.controller;
 
+import edu.nsu.cis.model.db.Cybercrime;
 import edu.nsu.cis.model.db.Person;
 import edu.nsu.cis.model.db.Persontype;
 import edu.nsu.cis.service.PersonService;
@@ -27,9 +28,14 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/save-person", method = RequestMethod.POST)
-    public String savePerson(@ModelAttribute("person") Person person) {
+    public ModelAndView savePerson(@ModelAttribute("Person") Person person) {
         personService.save(person);
-        return "/home";
+
+        List<Person> personList = personService.retrieveAll();
+        ModelAndView mav = new ModelAndView("personList");
+        mav.addObject("personList", personList);
+
+        return mav;
     }
 
     @RequestMapping("/new-person")
@@ -48,9 +54,15 @@ public class PersonController {
         return mav;
     }
 
+
     @RequestMapping("/delete-person/{id}")
-    public String deletePerson(@PathVariable(name = "id") int id) {
+    public ModelAndView deletePerson(@PathVariable(name = "id") int id) {
         personService.delete(id);
-        return "/home";
+
+        List<Person> personList = personService.retrieveAll();
+        ModelAndView mav = new ModelAndView("personList");
+        mav.addObject("personList", personList);
+
+        return mav;
     }
 }

@@ -27,11 +27,15 @@ public class PersonTypeController {
         return "personTypeList";
     }
 
-
     @RequestMapping(value = "/save-persontype", method = RequestMethod.POST)
-    public String savePersonType(@ModelAttribute("persontype") Persontype persontype) {
+    public ModelAndView savePersonType(@ModelAttribute("persontype") Persontype persontype) {
         personTypeService.save(persontype);
-        return "/home";
+
+        List<Persontype> personTypeList = personTypeService.retrieveAll();
+        ModelAndView mav = new ModelAndView("personTypeList");
+        mav.addObject("personTypeList", personTypeList);
+
+        return mav;
     }
 
     @RequestMapping("/new-persontype")
@@ -51,9 +55,14 @@ public class PersonTypeController {
     }
 
     @RequestMapping("/delete-persontype/{id}")
-    public String deletePersonType(@PathVariable(name = "id") int id) {
+    public ModelAndView deletePersonType(@PathVariable(name = "id") int id) {
         personTypeService.delete(id);
-        return "/home";
+
+        List<Persontype> personTypeList = personTypeService.retrieveAll();
+        ModelAndView mav = new ModelAndView("personTypeList");
+        mav.addObject("personTypeList", personTypeList);
+
+        return mav;
     }
 
 }
