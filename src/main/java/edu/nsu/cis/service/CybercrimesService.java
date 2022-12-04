@@ -1,14 +1,11 @@
 package edu.nsu.cis.service;
 
-import edu.nsu.cis.model.CyberResultDTO;
-import edu.nsu.cis.model.db.Cybercrime;
 import edu.nsu.cis.model.db.Cybercrimes;
 import edu.nsu.cis.repository.CybercrimesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class CybercrimesService {

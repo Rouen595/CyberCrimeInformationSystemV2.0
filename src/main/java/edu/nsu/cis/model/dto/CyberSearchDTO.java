@@ -1,4 +1,4 @@
-package edu.nsu.cis.model;
+package edu.nsu.cis.model.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
